@@ -1,0 +1,60 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+
+        <div class="text-right">
+          <button [routerLink]="['/article', 'new']" type="button" class="btn
+            waves-effect waves-light btn-rounded btn-primary">
+            <i class="fa fa-plus"></i>
+            Crear Articulo
+          </button>
+        </div>
+
+        <!-- <h3 class="card-title"> Articulos existentes (<small> {{ totalRegisters }} </small>)</h3> -->
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th> Titulo </th>
+              <th> Descripción </th>
+              <th> Fecha Creación </th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let article of articles">
+              <td> {{ article.title }} </td>
+              <td> {{ article.description}} </td>
+              <td> {{ article.createdAt | date }} </td>
+              <td>
+                <button [routerLink]="['/article', article._id]" class="btn
+                  btn-primary">
+                  <i class="fa fa-edit"></i>
+                </button>
+
+                <button (click)="viewDetails(article)" class="btn btn-info">
+                  <i class="fa fa-eye"></i>
+                </button>
+
+                <button (click)="deleteArt(article._id)" class="btn btn-danger">
+                  <i class="fa fa-trash-o"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="col-12 col-md-auto">
+          <nav class="d-flex justify-content-center">
+            <ul class="pagination">
+              <li class="page-item"><a class="page-link" (click)="changeOfSet(-5)">Anterior</a></li>
+              <li class="page-item"><a class="page-link" (click)="changeOfSet(5)">Siguiente</a></li>
+            </ul>
+          </nav>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

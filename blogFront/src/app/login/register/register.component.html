@@ -1,0 +1,45 @@
+<section id="wrapper" class="login-register login-sidebar" style="background-image:url(assets/images/background/login-register.jpg);">
+  <div class="login-box card">
+      <div class="card-body">
+          <form [formGroup]="registerForm" autocomplete="off" (ngSubmit)="register()" class="form-horizontal form-material" id="loginform">
+              <a href="javascript:void(0)" class="text-center db"><img src="assets/images/logo-icon.png" alt="Home" /><br/>
+                  <img src="assets/images/logo-text.png" alt="Home" />
+              </a>
+              <h3 class="box-title m-t-40 m-b-0">Registrate</h3><small>Crea tu cuenta y disfruta</small>
+              <div class="form-group m-t-20">
+                  <div class="col-xs-12">
+                      <input formControlName="userName" name="nombre" class="form-control" type="text" required placeholder="Nombre Usuario">
+                  </div>
+              </div>
+              <div class="form-group ">
+                  <div class="col-xs-12">
+                      <input class="form-control" formControlName="email" name="email" type="email" required placeholder="Correo electronico">
+                  </div>
+              </div>
+              <div class="form-group ">
+                  <div class="col-xs-12">
+                      <input class="form-control" formControlName="password" name="password" type="password" required placeholder="Contraseña">
+                  </div>
+              </div>
+              <div class="form-group">
+                  <div class="col-xs-12">
+                      <input class="form-control" formControlName="password2" name="password2" type="password" required placeholder="Confirmar contraseña">
+                  </div>
+              </div>
+              <div class="form-group" *ngIf="registerForm.errors && !registerForm.pristine">
+                  <span class="text-danger"> Las contraseñas no coinciden </span>
+              </div>
+              <div class="form-group text-center m-t-20">
+                  <div class="col-xs-12">
+                      <button class="btn btn-info btn-lg btn-block text-uppercase waves-effect waves-light" type="submit"> Registrate </button>
+                  </div>
+              </div>
+              <div class="form-group m-b-0">
+                  <div class="col-sm-12 text-center">
+                      <p>¿tienes una cuenta? <a routerLink="/login" class="text-info m-l-5"><b>Inicia sesion</b></a></p>
+                  </div>
+              </div>
+          </form>
+      </div>
+  </div>
+</section>

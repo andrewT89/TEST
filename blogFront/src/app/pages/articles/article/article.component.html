@@ -1,0 +1,28 @@
+<div class="container center-form">
+  <div class="card w-50">
+    <div class="card-body">
+      <h5 class="card-title">Articulo</h5>
+      <p class="card-text">{{ (idArticle !== null && idArticle !== 'new') ? 'Actualización de articulos' : 'Creación de articulos'}}</p>
+
+      <form [formGroup]="articleForm">
+        <div class="form-group">
+          <label id="nombre" for="nombre"> Titulo </label>
+          <input type="text" formControlName="title" class="form-control"
+            placeholder="Digite titulo" required>
+        </div>
+        <div class="form-group">
+          <textarea formControlName="description" placeholder="Digite descripción" cols="30" rows="10"></textarea>
+        </div>
+        <button type="submit" (click)="idArticle ? save() : edit()" class="btn
+          btn-success waves-effect waves-light m-r-10">
+          <i ngClass="{{ (idArticle !== null && idArticle !== 'new') ? 'fa fa-edit' : 'fa fa-save' }}"></i>
+          {{ (idArticle !== null && idArticle !== 'new') ? 'Actualizar' : 'Guardar' }}
+        </button>
+        <a routerLink="/articles" class="btn btn-inverse waves-effect
+          waves-light">
+          Cancelar
+        </a>
+      </form>
+    </div>
+  </div>
+</div>
