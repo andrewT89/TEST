@@ -32,7 +32,6 @@ export class LoginComponent implements OnInit {
       .loginUser(this.loginForm.value)
       .subscribe(resp => {
         if (resp) {
-          debugger;
           const userStorage = new User();
           userStorage.userName = resp.userName;
           userStorage.email = resp.email;

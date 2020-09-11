@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { UserService } from '../../services/service.index';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register',
@@ -9,7 +12,10 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class RegisterComponent implements OnInit {
   public registerForm: FormGroup;
 
-  constructor() {}
+  constructor(
+    private router: Router,
+    private userSer: UserService
+  ) {}
 
   ngOnInit(): void {
     this.registerForm = new FormGroup({
@@ -36,5 +42,19 @@ export class RegisterComponent implements OnInit {
     };
   }
 
-  public register(): void {}
+  public register(): void {
+    if (this.registerForm.valid) {
+      this.userSer.register(this.registerForm.value)
+      .subscribe((resp: any) => {
+        if (resp) {
+          Swal.fire(
+            'Registro!',
+            'Usuario registrado correctamente.',
+            'success'
+          );
+          this.router.navigate(['/login']);
+        }
+      });
+    }
+  }
 }

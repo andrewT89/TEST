@@ -25,6 +25,7 @@ export class UserService {
   }
 
   public logout(): void {
+    this.deleteStorage();
     this.router.navigate(['/login']);
   }
 
